@@ -1,5 +1,5 @@
 const path = require('path');
-const db = require('./util/dataBase');
+// const db = require('./util/dataBase');
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -8,9 +8,9 @@ const errorController = require('./controllers/error');
 
 const app = express();
 
-db.execute('SELECT * FROM products').then(data =>{
-    console.log(data);
-}).catch();
+// db.execute('SELECT * FROM products').then(data =>{
+//     console.log(data);
+// }).catch();
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');

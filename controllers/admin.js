@@ -16,9 +16,17 @@ exports.postAddProduct = (req, res, next) => {
   const image = req.body.image;
   const price = req.body.price;
   const description = req.body.description;
-  const product = new Product(null,title,image,price,description);
-  product.save();
-  res.redirect('/');
+  const product = new Product(null, title, image, price, description);
+
+  product.save()
+    .then(() => {
+      res.redirect('/');
+    })
+    .catch(err => {
+      console.error('Error saving product:', err);
+      // Handle the error or send an appropriate response to the client
+      next(err); // Pass the error to the next middleware or error handler
+    });
 };
 exports.getEditProduct = (req, res, next) => {
   //always the value of query params is string "true" like thiss
