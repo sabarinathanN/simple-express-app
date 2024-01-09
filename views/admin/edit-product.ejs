@@ -15,7 +15,7 @@
             <input type="text" name="title" id="title" value="<% if(editing) { %> <%= product.title %> <% } %>">
 
             <label for="image">Image URL</label>
-            <input type="text" name="image" id="image" value="<% if(editing) { %> <%= product.image %> <% } %>">
+            <input type="text" name="image" id="image" value="<% if(editing) { %> <%= product.imageurl %> <% } %>">
 
             <label for="price">Price</label>
             <input type="number" name="price" id="price" value="<%= editing ? parseFloat(product.price) : '' %>">
