@@ -12,23 +12,26 @@ exports.getAddProduct = (req, res, next) => {
 };
 
 exports.postAddProduct = (req, res, next) => {
+console.log(req.body)
   const title = req.body.title;
-  const image = req.body.image;
+  const imageUrl = req.body.image;
   const price = req.body.price;
   const description = req.body.description;
- Product.create({title:title,
-   imageurl:image,
-   price:price, 
-   description:description,
-  userId:req.user.id
-  })
-   .then(result =>{
-    console.log(result)
-    res.redirect('/products')
-   })
-   .catch(err =>{
-    console.log(err)
-   })
+  // console.log(req.user)
+  req.user.createProduct({
+      title: title,
+      price: price,
+      imageurl: imageUrl,
+      description: description
+    })
+    .then(result => {
+      // console.log(result);
+      console.log('Created Product');
+      res.redirect('/admin/products');
+    })
+    .catch(err => {
+      console.log(err);
+    });
 };
 exports.getEditProduct = (req, res, next) => {
   //always the value of query params is string "true" like thiss
